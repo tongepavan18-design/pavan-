@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sakhi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header><h1>Sakhi</h1><p>Emergency alert, live location and messages.</p></header>
+  <main>
+
+    <!-- Emergency alert -->
+    <section class="view on" id="v-sos">
+      <h2>Emergency alert</h2>
+      <p class="hint">Press and hold for 2 seconds. Let go early to cancel.</p>
+      <div class="sosWrap">
+        <div class="sos" id="sosBtn">SOS
+          <svg viewBox="0 0 248 248"><circle id="ring" cx="124" cy="124" r="117"/></svg>
+        </div>
+      </div>
+      <div class="card"><h3>What happens</h3>
+        <p class="hint">Sakhi sends an SMS with a live tracking link to all your saved contacts automatically and keeps updating your location until you stop.</p></div>
+    </section>
+
+    <!-- Live location -->
+    <section class="view" id="v-loc">
+      <h2>Live location</h2>
+      <div class="card">
+        <div class="row"><button id="locStart">Start sharing</button><button class="ghost" id="locStop">Stop</button></div>
+        <p class="hint" id="locStatus">Not sharing.</p>
+        <pre id="locInfo" style="display:none"></pre>
+        <div class="row" style="margin-top:8px"><a class="btn ghost" id="locMap" target="_blank" rel="noopener" style="display:none">Open in Maps</a><button class="ghost" id="locCopy" style="display:none">Copy link</button></div>
+      </div>
+      <div class="card"><h3>Send my location</h3>
+        <p class="hint">Sends the latest map link. Tap again to send an update.</p>
+        <div id="locSend"></div></div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="view" id="v-circle">
+      <h2>Contacts</h2>
+      <div class="card"><h3>Your note (goes into every message)</h3>
+        <input id="note" placeholder="e.g. My name is Asha. Going to Andheri station.">
+        <button style="margin-top:10px" id="noteSave">Save</button></div>
+      <div class="card"><h3>Trusted contacts (up to 5)</h3>
+        <div id="cts"></div>
+        <div class="row" style="margin-top:12px"><input id="cName" placeholder="Name"><input id="cNum" placeholder="Phone, e.g. 9876543210" inputmode="tel"></div>
+        <button style="margin-top:10px;width:100%" id="cAdd">Add contact</button>
+        <p class="hint">Saved only in this browser. 10 digit numbers are treated as India (+91).</p></div>
+    </section>
+
+  </main>
+  <nav><div id="nav"></div></nav>
+</div>
+
+<!-- Emergency alert screen -->
+<div id="alert"><div class="in">
+  <h2>Emergency alert</h2>
+  <p class="hint" id="alLoc">Finding your location...</p>
+  <div class="card"><h3>Status</h3><p id="alStatus" style="margin:0">Starting...</p></div>
+  <div class="card"><h3>Message</h3>
+    <pre id="alMsg"></pre>
+    <div class="row"><button id="alShare">Share...</button><button class="ghost" id="alCopy">Copy</button></div></div>
+  <div class="card"><h3>Send to your contacts</h3><div id="alCts"></div></div>
+  <button class="big" id="alStop" style="margin-bottom:12px">I'm safe. Stop sharing</button>
+  <button class="ghost big" id="alClose">Close (keep sharing)</button>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
